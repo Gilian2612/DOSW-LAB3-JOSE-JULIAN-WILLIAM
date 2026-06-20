@@ -1,3 +1,7 @@
+### William Ruiz
+### Julian Tinjaca 
+### Jose Garcia 
+
 # ¿Cómo descargar un repositorio de GitHub a tu PC?
 
 Existen dos formas principales para descargar un repositorio de GitHub: usando Git o descargando un archivo ZIP.
