@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b3ddc136-e80d-413c-90ec-9a5fada74f5f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/src/main/resources/application.properties" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/src/test/java/edu/dosw/bootcamp/lab/DoswBootcampLaboratorio03ApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DOSW-LAB3-JOSE-JULIAN-WILLIAM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DOSW-LAB3-JOSE-JULIAN-WILLIAM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
