@@ -1,7 +1,7 @@
 # Desglose del Trabajo — Bankify
 
 > Responsable de la épica: Julian
-> Requerimiento funcional asociado (Parte 4): RF — Realizar depósitos a una cuenta
+> Requerimiento funcional asociado (Parte 4):
 
 ---
 
