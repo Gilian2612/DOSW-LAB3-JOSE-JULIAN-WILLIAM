@@ -155,4 +155,3 @@ Justificación: Mejora la confianza y la trazabilidad, pero el depósito puede f
 | HU-02    | Depósito a cuenta de terceros | Alto      |
 | HU-03    | Validación de monto y cuenta  | Medio     |
 | HU-04    | Comprobante de depósito       | Bajo      |
-
