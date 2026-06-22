@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb89d85d-e3ab-4809-acc9-53190892188b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/images/jira/SCRUM5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/images/jira/SCRUM6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/images/jira/SCRUM7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/images/READMETEST.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/planning/READMETEST.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/planning/jira.md" beforeDir="false" afterPath="$PROJECT_DIR$/DOSW-Bootcamp-Laboratorio-03/docs/planning/jira.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Feature/DOSW-05-project-work-breakdown" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "Feature/DOSW-06-jira-backlog"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="DOSW-LAB3-JOSE-JULIAN-WILLIAM" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="DOSW-LAB3-JOSE-JULIAN-WILLIAM" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>
