@@ -159,4 +159,3 @@ Justificación: Mejora la confianza y la trazabilidad, pero el depósito puede f
 | HU-03    | Validación de monto y cuenta  | Medio     |
 | HU-04    | Comprobante de depósito       | Bajo      |
 
-> Nota: Las estimaciones en puntos de historia se definirán en la Parte 7 (Planning Poker) y los IDs de Jira (EPIC-XX, STORY-XX, TASK-XX) se actualizarán en la Parte 6.
