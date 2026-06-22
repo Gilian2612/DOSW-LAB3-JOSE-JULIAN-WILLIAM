@@ -1,177 +1,163 @@
 # Desglose del Trabajo — Bankify
 
-> **Documento:** `scrum_work_bankify.md` · **Parte 5 — Desglose del Trabajo (Scrum)**
-> **Responsable de la épica:** Julian
-> **Requerimiento funcional asociado (Parte 4):** RF — *Realizar depósitos a una cuenta*
-> **Actualizado en la Parte 6** con los IDs de Jira (reemplazar `XX` por los IDs reales).
+> Documento: scrum_work_bankify.md · Parte 5 — Desglose del Trabajo (Scrum)
+
+> Responsable: Julian.
+
+> Requerimiento funcional asociado (Parte 4): RF — Realizar depósitos a una cuenta
+
+> Actualizado en la Parte 6 con los IDs reales de Jira (épica SCRUM-5, historias SCRUM-6 a SCRUM-9, subtareas SCRUM-10 a SCRUM-21).
 
 ---
 
 ## 1. Contexto
 
-Bankify es una startup fintech en etapa de MVP que necesita permitir el ingreso de
-dinero a las cuentas de la plataforma de forma **controlada**. El depósito es una
-operación de escritura sobre el saldo, por lo que requiere validaciones estrictas de
-la cuenta destino y del monto, así como trazabilidad de cada movimiento.
+Bankify es una startup fintech en etapa de MVP que necesita permitir el ingreso de dinero a las cuentas de la plataforma de forma controlada. El depósito es una operación de escritura sobre el saldo, por lo que requiere validaciones estrictas de la cuenta destino y del monto, así como trazabilidad de cada movimiento.
 
-Una particularidad del caso Bankify es que el depósito puede ser realizado tanto por
-el **cliente propietario** de la cuenta como por **otros usuarios**, lo que obliga a
-contemplar dos flujos: depósito a cuenta propia y depósito a cuenta de terceros.
+Una particularidad del caso Bankify es que el depósito puede ser realizado tanto por el cliente propietario de la cuenta como por otros usuarios, lo que obliga a contemplar dos flujos: depósito a cuenta propia y depósito a cuenta de terceros.
 
-Este documento estructura el trabajo de desarrollo usando la jerarquía ágil
-**Épica → Historias de Usuario → Tareas**. En esta etapa **no se definen
-estimaciones**; eso se realizará en la Parte 7 (Planning Poker). Aquí solo se define
-la **prioridad** de cada historia (Alto / Medio / Bajo) con su justificación.
+Este documento estructura el trabajo de desarrollo usando la jerarquía ágil Épica → Historias de Usuario → Tareas. En esta etapa no se definen estimaciones; eso se realizará en la Parte 7 (Planning Poker). Aquí solo se define la prioridad de cada historia (Alto / Medio / Bajo) con su justificación.
 
 ### Reglas de negocio relevantes para esta épica
 
-- Un número de cuenta tiene exactamente **10 dígitos**, solo numéricos, sin caracteres especiales.
-- Los **dos primeros dígitos** identifican el banco (`01` → Bancolombia, `02` → Davivienda).
-- Una cuenta solo es válida si **pertenece a un banco registrado** en el sistema.
-- El depósito puede hacerlo el **cliente propietario u otros usuarios** autorizados.
-- El depósito debe ser **controlado**: monto válido, cuenta destino válida y activa, y registro de la transacción.
+* Un número de cuenta tiene exactamente 10 dígitos, solo numéricos, sin caracteres especiales.
+* Los dos primeros dígitos identifican el banco (`01` → Bancolombia, `02` → Davivienda).
+* Una cuenta solo es válida si pertenece a un banco registrado en el sistema.
+* El depósito puede hacerlo el cliente propietario u otros usuarios autorizados.
+* El depósito debe ser controlado: monto válido, cuenta destino válida y activa, y registro de la transacción.
 
 ---
 
 ## 2. Épica
 
-| Campo | Valor |
-|-------|-------|
-| **ID Scrum** | EPIC-DEPOSITO-01 |
-| **ID Jira** | `EPIC-XX` |
-| **Título** | Depósitos controlados a cuentas bancarias |
-| **Descripción** | Como plataforma, Bankify debe permitir que un usuario autenticado deposite dinero en una cuenta —propia o de un tercero— de forma controlada, validando que la cuenta destino sea válida y esté activa, que el monto sea correcto, aplicando el incremento de saldo de manera transaccional y dejando registro auditable de la operación con su respectivo comprobante. |
-| **Objetivo de negocio** | Habilitar el ingreso de fondos a la plataforma de manera segura y trazable, condición indispensable para que cualquier otra operación de dinero tenga sentido en el MVP. |
-| **Fecha de vencimiento** | *(definir en Jira)* |
-| **Rol principal** | Cliente propietario / otros usuarios |
+| Campo                | Valor                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ID Jira              | SCRUM-5                                                                                                                                                                                                                                                                                                                                                                 |
+| Título               | Depósitos controlados a cuentas bancarias                                                                                                                                                                                                                                                                                                                               |
+| Descripción          | Como plataforma, Bankify debe permitir que un usuario autenticado deposite dinero en una cuenta —propia o de un tercero— de forma controlada, validando que la cuenta destino sea válida y esté activa, que el monto sea correcto, aplicando el incremento de saldo de manera transaccional y dejando registro auditable de la operación con su respectivo comprobante. |
+| Objetivo de negocio  | Habilitar el ingreso de fondos a la plataforma de manera segura y trazable, condición indispensable para que cualquier otra operación de dinero tenga sentido en el MVP.                                                                                                                                                                                                |
+| Fecha de vencimiento | 27 jun 2026                                                                                                                                                                                                                                                                                                                                                             |
+| Rol principal        | Cliente propietario / otros usuarios                                                                                                                                                                                                                                                                                                                                    |
 
 ---
 
 ## 3. Historias de Usuario
 
-> Formato: **Como** [rol], **quiero** [acción] **para** [beneficio].
+> Formato: Como [rol], quiero [acción] para [beneficio].
 > Cada historia incluye criterios de aceptación y prioridad justificada.
 
-### HU-01 · Depositar dinero en una cuenta propia · `ID Jira: STORY-XX`
+### HU-01 · Depositar dinero en una cuenta propia (SCRUM-6)
 
-**Como** cliente propietario autenticado, **quiero** depositar dinero en mi propia
-cuenta **para** aumentar el saldo del que dispongo.
+Como cliente propietario autenticado, quiero depositar dinero en mi propia cuenta para aumentar el saldo del que dispongo.
 
-**Criterios de aceptación**
-- Dado que el cliente selecciona una cuenta propia y un monto válido, cuando confirma el depósito, entonces el saldo de la cuenta se incrementa exactamente en el monto depositado.
-- La operación es transaccional: si falla cualquier paso, el saldo no se modifica parcialmente.
-- El cliente recibe confirmación visual de que el depósito fue exitoso.
-- La operación cumple el tiempo objetivo de la plataforma (< 2 segundos).
+Criterios de aceptación
 
-**Prioridad:** 🔴 **Alto**
-**Justificación:** Es el flujo base y más simple de la épica (el usuario opera sobre
-su propia cuenta). Entrega el valor central —ingresar dinero— y es prerequisito para
-el resto de historias. Indispensable en la primera iteración.
+* Dado que el cliente selecciona una cuenta propia y un monto válido, cuando confirma el depósito, entonces el saldo de la cuenta se incrementa exactamente en el monto depositado.
+* La operación es transaccional: si falla cualquier paso, el saldo no se modifica parcialmente.
+* El cliente recibe confirmación visual de que el depósito fue exitoso.
+* La operación cumple el tiempo objetivo de la plataforma (< 2 segundos).
 
----
+Prioridad: Alto
 
-### HU-02 · Depositar dinero en la cuenta de un tercero · `ID Jira: STORY-XX`
-
-**Como** usuario autenticado, **quiero** depositar dinero en la cuenta de otra persona
-indicando su número de cuenta **para** transferirle fondos.
-
-**Criterios de aceptación**
-- Dado un número de cuenta destino válido y existente, cuando el usuario confirma el depósito, entonces el saldo de esa cuenta se incrementa en el monto indicado.
-- El sistema confirma al usuario el banco destino (derivado de los 2 primeros dígitos) antes de procesar, para reducir errores.
-- El usuario no necesita ser propietario de la cuenta destino para depositar.
-- El depósito a un tercero genera el mismo registro y comprobante que un depósito propio.
-
-**Prioridad:** 🔴 **Alto**
-**Justificación:** Es un flujo explícitamente requerido por el caso (otros usuarios
-pueden depositar). Tiene alto valor de negocio y comparte gran parte de la lógica con
-HU-01, por lo que conviene abordarlo en la misma iteración.
+Justificación: Es el flujo base y más simple de la épica (el usuario opera sobre su propia cuenta). Entrega el valor central —ingresar dinero— y es prerequisito para el resto de historias. Indispensable en la primera iteración.
 
 ---
 
-### HU-03 · Validar el monto y la cuenta destino antes de procesar el depósito · `ID Jira: STORY-XX`
+### HU-02 · Depositar dinero en la cuenta de un tercero (SCRUM-7)
 
-**Como** usuario, **quiero** que el sistema valide el número de cuenta destino y el
-monto antes de ejecutar el depósito **para** evitar operaciones inválidas o erróneas.
+Como usuario autenticado, quiero depositar dinero en la cuenta de otra persona indicando su número de cuenta para transferirle fondos.
 
-**Criterios de aceptación**
-- El sistema valida que el número de cuenta tenga exactamente 10 dígitos numéricos y que los 2 primeros correspondan a un banco registrado.
-- El sistema rechaza montos que no sean positivos, no numéricos o con formato inválido.
-- Si la cuenta destino no existe o está inactiva, el depósito no se ejecuta y se informa con un mensaje claro.
-- Ninguna validación deja el saldo en un estado intermedio o inconsistente.
+Criterios de aceptación
 
-**Prioridad:** 🟡 **Medio**
-**Justificación:** Es clave para que el depósito sea "controlado", pero se construye
-sobre los flujos de HU-01 y HU-02. Su valor depende de que el flujo base ya exista,
-por lo que su prioridad es media respecto a las historias núcleo.
+* Dado un número de cuenta destino válido y existente, cuando el usuario confirma el depósito, entonces el saldo de esa cuenta se incrementa en el monto indicado.
+* El sistema confirma al usuario el banco destino (derivado de los 2 primeros dígitos) antes de procesar, para reducir errores.
+* El usuario no necesita ser propietario de la cuenta destino para depositar.
+* El depósito a un tercero genera el mismo registro y comprobante que un depósito propio.
+
+Prioridad: Alto
+
+Justificación: Es un flujo explícitamente requerido por el caso. Tiene alto valor de negocio y comparte gran parte de la lógica con HU-01, por lo que conviene abordarlo en la misma iteración.
 
 ---
 
-### HU-04 · Generar comprobante del depósito realizado · `ID Jira: STORY-XX`
+### HU-03 · Validar el monto y la cuenta destino antes de procesar el depósito (SCRUM-8)
 
-**Como** usuario, **quiero** recibir un comprobante del depósito realizado **para**
-tener evidencia de la operación.
+Como usuario, quiero que el sistema valide el número de cuenta destino y el monto antes de ejecutar el depósito para evitar operaciones inválidas o erróneas.
 
-**Criterios de aceptación**
-- Cada depósito exitoso genera un comprobante con identificador único, fecha y hora, cuenta destino, monto y usuario que depositó.
-- El usuario puede visualizar el comprobante inmediatamente después de la operación.
-- El comprobante queda registrado como parte del log de transacciones para auditoría.
-- El comprobante es de solo lectura y no puede ser alterado.
+Criterios de aceptación
 
-**Prioridad:** 🟢 **Bajo**
-**Justificación:** Mejora la confianza y la trazabilidad, pero el depósito puede
-funcionar sin un comprobante formal en la primera iteración. Es una mejora de valor
-que puede entregarse después sin bloquear el MVP.
+* El sistema valida que el número de cuenta tenga exactamente 10 dígitos numéricos y que los 2 primeros correspondan a un banco registrado.
+* El sistema rechaza montos que no sean positivos, no numéricos o con formato inválido.
+* Si la cuenta destino no existe o está inactiva, el depósito no se ejecuta y se informa con un mensaje claro.
+* Ninguna validación deja el saldo en un estado intermedio o inconsistente.
+
+Prioridad: Medio
+
+Justificación: Es clave para que el depósito sea "controlado", pero se construye sobre los flujos de HU-01 y HU-02. Su valor depende de que el flujo base ya exista, por lo que su prioridad es media respecto a las historias núcleo.
+
+---
+
+### HU-04 · Generar comprobante del depósito realizado (SCRUM-9)
+
+Como usuario, quiero recibir un comprobante del depósito realizado para tener evidencia de la operación.
+
+Criterios de aceptación
+
+* Cada depósito exitoso genera un comprobante con identificador único, fecha y hora, cuenta destino, monto y usuario que depositó.
+* El usuario puede visualizar el comprobante inmediatamente después de la operación.
+* El comprobante queda registrado como parte del log de transacciones para auditoría.
+* El comprobante es de solo lectura y no puede ser alterado.
+
+Prioridad: Bajo
+
+Justificación: Mejora la confianza y la trazabilidad, pero el depósito puede funcionar sin un comprobante formal en la primera iteración. Es una mejora de valor que puede entregarse después sin bloquear el MVP.
 
 ---
 
 ## 4. Tareas
 
-> 3 tareas por historia (12 en total). Cada tarea es una unidad de trabajo técnico
-> asignable a un integrante. **No se estiman horas en esta parte.**
+> 3 tareas por historia. Cada tarea es una unidad de trabajo técnico asignable a un integrante. No se estiman horas en esta parte.
 
-### Tareas de HU-01 · Depósito a cuenta propia
+### Tareas de HU-01 · Depósito a cuenta propia (SCRUM-6)
 
-| ID Jira | Tarea | Descripción técnica |
-|---------|-------|---------------------|
-| `TASK-XX` | Endpoint de depósito | Diseñar e implementar `POST /api/accounts/{numero}/deposit` que reciba el monto a depositar. |
-| `TASK-XX` | Lógica transaccional de saldo | Implementar en el dominio el incremento de saldo de forma atómica (rollback ante fallo). |
-| `TASK-XX` | Formulario de depósito (propio) | Construir el formulario UI para depositar en una cuenta propia con validación básica y confirmación. |
+| ID Jira  | Tarea                           | Descripción técnica                                                                                  |
+| -------- | ------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| SCRUM-10 | Endpoint de depósito            | Diseñar e implementar `POST /api/accounts/{numero}/deposit` que reciba el monto a depositar.         |
+| SCRUM-11 | Lógica transaccional de saldo   | Implementar en el dominio el incremento de saldo de forma atómica (rollback ante fallo).             |
+| SCRUM-12 | Formulario de depósito (propio) | Construir el formulario UI para depositar en una cuenta propia con validación básica y confirmación. |
 
-### Tareas de HU-02 · Depósito a cuenta de terceros
+### Tareas de HU-02 · Depósito a cuenta de terceros (SCRUM-7)
 
-| ID Jira | Tarea | Descripción técnica |
-|---------|-------|---------------------|
-| `TASK-XX` | Soporte de cuenta destino externa | Adaptar el servicio de depósito para aceptar una cuenta destino que no pertenece al usuario que deposita. |
-| `TASK-XX` | Búsqueda y verificación de cuenta destino | Implementar la consulta que verifica la existencia y el estado de la cuenta destino antes de depositar. |
-| `TASK-XX` | Flujo UI de depósito a terceros | Construir la pantalla para ingresar número de cuenta destino, mostrar el banco confirmado y el monto. |
+| ID Jira  | Tarea                                     | Descripción técnica                                                                                       |
+| -------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| SCRUM-13 | Soporte de cuenta destino externa         | Adaptar el servicio de depósito para aceptar una cuenta destino que no pertenece al usuario que deposita. |
+| SCRUM-14 | Búsqueda y verificación de cuenta destino | Implementar la consulta que verifica la existencia y el estado de la cuenta destino antes de depositar.   |
+| SCRUM-15 | Flujo UI de depósito a terceros           | Construir la pantalla para ingresar número de cuenta destino, mostrar el banco confirmado y el monto.     |
 
-### Tareas de HU-03 · Validación de monto y cuenta
+### Tareas de HU-03 · Validación de monto y cuenta (SCRUM-8)
 
-| ID Jira | Tarea | Descripción técnica |
-|---------|-------|---------------------|
-| `TASK-XX` | Validación de número de cuenta | Implementar validador de formato (10 dígitos numéricos) y de banco registrado (prefijo de 2 dígitos). |
-| `TASK-XX` | Validación de monto | Implementar la validación del monto: positivo, numérico y dentro de límites permitidos. |
-| `TASK-XX` | Manejo de errores en UI | Definir y mostrar mensajes claros de error de validación y bloquear el envío hasta que los datos sean válidos. |
+| ID Jira  | Tarea                          | Descripción técnica                                                                                            |
+| -------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| SCRUM-16 | Validación de número de cuenta | Implementar validador de formato (10 dígitos numéricos) y de banco registrado (prefijo de 2 dígitos).          |
+| SCRUM-17 | Validación de monto            | Implementar la validación del monto: positivo, numérico y dentro de límites permitidos.                        |
+| SCRUM-18 | Manejo de errores en UI        | Definir y mostrar mensajes claros de error de validación y bloquear el envío hasta que los datos sean válidos. |
 
-### Tareas de HU-04 · Comprobante de depósito
+### Tareas de HU-04 · Comprobante de depósito (SCRUM-9)
 
-| ID Jira | Tarea | Descripción técnica |
-|---------|-------|---------------------|
-| `TASK-XX` | Modelo de transacción/comprobante | Crear la entidad/tabla `transaccion_deposito` con id único, timestamp, cuenta, monto y usuario. |
-| `TASK-XX` | Servicio de generación de comprobante | Implementar el servicio que arma y devuelve el comprobante tras un depósito exitoso. |
-| `TASK-XX` | Pantalla de confirmación/comprobante | Construir la vista UI que muestra el comprobante del depósito realizado. |
+| ID Jira  | Tarea                                 | Descripción técnica                                                                             |
+| -------- | ------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| SCRUM-19 | Modelo de transacción/comprobante     | Crear la entidad/tabla `transaccion_deposito` con id único, timestamp, cuenta, monto y usuario. |
+| SCRUM-20 | Servicio de generación de comprobante | Implementar el servicio que arma y devuelve el comprobante tras un depósito exitoso.            |
+| SCRUM-21 | Pantalla de confirmación/comprobante  | Construir la vista UI que muestra el comprobante del depósito realizado.                        |
 
 ---
 
 ## 5. Resumen de prioridades
 
-| Historia | Título | Prioridad | ID Jira |
-|----------|--------|-----------|---------|
-| HU-01 | Depósito a cuenta propia | 🔴 Alto | `STORY-XX` |
-| HU-02 | Depósito a cuenta de terceros | 🔴 Alto | `STORY-XX` |
-| HU-03 | Validación de monto y cuenta | 🟡 Medio | `STORY-XX` |
-| HU-04 | Comprobante de depósito | 🟢 Bajo | `STORY-XX` |
+| Historia | Título                        | Prioridad | ID Jira |
+| -------- | ----------------------------- | --------- | ------- |
+| HU-01    | Depósito a cuenta propia      | Alto      | SCRUM-6 |
+| HU-02    | Depósito a cuenta de terceros | Alto      | SCRUM-7 |
+| HU-03    | Validación de monto y cuenta  | Medio     | SCRUM-8 |
+| HU-04    | Comprobante de depósito       | Bajo      | SCRUM-9 |
 
-> **Nota:** Las estimaciones en puntos de historia se definirán en la **Parte 7
-> (Planning Poker)**. Los IDs de Jira (`EPIC-XX`, `STORY-XX`, `TASK-XX`) deben
-> reemplazarse por los IDs reales que asigne Jira al crear cada elemento.
