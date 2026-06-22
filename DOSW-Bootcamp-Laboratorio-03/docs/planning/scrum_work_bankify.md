@@ -1,7 +1,7 @@
 # Desglose del Trabajo — Bankify
 
 > Documento: `scrum_work_bankify.md` · Parte 5 — Desglose del Trabajo (Scrum)
-> Responsable de la épica: Julian
+> Responsable: Julian
 > Requerimiento funcional asociado (Parte 4): RF — Realizar depósitos a una cuenta
 
 ---
@@ -72,7 +72,7 @@ Criterios de aceptación
 
 Prioridad: Alto
 
-Justificación: Es un flujo explícitamente requerido por el caso (otros usuarios pueden depositar). Tiene alto valor de negocio y comparte gran parte de la lógica con HU-01, por lo que conviene abordarlo en la misma iteración.
+Justificación: Es un flujo explícitamente requerido por el caso. Tiene alto valor de negocio y comparte gran parte de la lógica con HU-01, por lo que conviene abordarlo en la misma iteración.
 
 ---
 
@@ -112,7 +112,7 @@ Justificación: Mejora la confianza y la trazabilidad, pero el depósito puede f
 
 ## 4. Tareas
 
-> 3 tareas por historia (12 en total). Cada tarea es una unidad de trabajo técnico asignable a un integrante. No se estiman horas en esta parte.
+> 3 tareas por historia. Cada tarea es una unidad de trabajo técnico asignable a un integrante. No se estiman horas en esta parte.
 
 ### Tareas de HU-01 · Depósito a cuenta propia
 
