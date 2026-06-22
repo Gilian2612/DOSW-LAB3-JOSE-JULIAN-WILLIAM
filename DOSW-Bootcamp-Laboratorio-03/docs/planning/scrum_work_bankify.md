@@ -1,7 +1,9 @@
 # Desglose del Trabajo — Bankify
 
-> Documento: `scrum_work_bankify.md` · Parte 5 — Desglose del Trabajo (Scrum)
-> Responsable: Julian
+> Documento: scrum_work_bankify.md · Parte 5 — Desglose del Trabajo (Scrum)
+
+> Responsable: Julian.
+
 > Requerimiento funcional asociado (Parte 4): RF — Realizar depósitos a una cuenta
 
 ---
