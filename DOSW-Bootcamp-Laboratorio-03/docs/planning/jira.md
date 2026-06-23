@@ -12,7 +12,7 @@
 El proyecto en Jira está configurado con la jerarquía **Épica → Tarea → Subtarea**
 (no incluye el tipo "Story"). Por lo tanto, las **historias de usuario** del laboratorio
 se crearon como **Tareas** colgando de la épica, y las **tareas técnicas** del
-laboratorio se crearon como **Subtareas** dentro de cada historia. La estructura
+laboratorioo se crearon como **Subtareas** dentro de cada historia. La estructura
 jerárquica y el contenido cumplen con lo solicitado.
 
 ```
